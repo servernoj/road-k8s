@@ -20,15 +20,24 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa 
           chmod 600 ~/.ssh/id_rsa
       - name: Ansible Inventory File for Remote host 
-        working-directory: ./devops/ansible/ 
+        working-directory: ./devops/ansible/
         run: |
-          echo "${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}" >> inventory.ini      
+          echo "${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}" >> inventory.ini
+      - name: test 1
+        run: |
+          cat ./devops/ansible/inventory.ini
+          cat ./devops/ansible/ansible.cfg
+      - name: test 2
+        working-directory: ./devops/ansible/
+        run: |
+          cat ./inventory.ini
+          cat ./ansible.cfg
       - name: Ping Ansible Hosts 
-        working-directory: ./devops/ansible/ 
+        working-directory: ./devops/ansible/
         run: |
           ansible all -m ping
       - name: Run Ansible Playbooks
-        working-directory: ./devops/ansible/ 
+        working-directory: ./devops/ansible/
         run: |
           ansible-playbook install-nginx.yaml
       # - name: Deploy Python via Ansible
