@@ -23,15 +23,10 @@ jobs:
         working-directory: ./devops/ansible/
         run: |
           echo "${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS_1 }}" >> inventory.ini
-          echo "${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS_2 }}" >> inventory.ini
       - name: Ping Ansible Hosts 
         working-directory: ./devops/ansible/
         run: |
           ansible all -m ping
-      # - name: Run Ansible Playbooks
-      #   working-directory: ./devops/ansible/
-      #   run: |
-      #     ansible-playbook install-nginx.yaml
       - name: Deploy Python via Ansible
         working-directory: ./devops/ansible/ 
         run: |
