@@ -7,7 +7,7 @@ jobs:
     env:
       DH_USER: ${{ secrets.DOCKERHUB_USERNAME }}
       REPO: ${{ secrets.DOCKERHUB_REPO }}
-      SSH_OPTS: '-t -o StrictHostKeyChecking=no'
+      SSH_OPTS: '-o StrictHostKeyChecking=no'
       REMOTE: root@${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS_1 }} 
       REMOTE_APP_DIR: '/opt/app'
     steps:
@@ -46,7 +46,7 @@ jobs:
           EOF
       - name: Ensure remote directory exists and has the compose spec file
         run: |
-          ssh $SSH_OPTS $REMOTE mkdir -p $REMOTE_APP_DIR            
+          ssh $SSH_OPTS $REMOTE mkdir -p $REMOTE_APP_DIR
           scp $SSH_OPTS docker-compose.yaml $REMOTE:$REMOTE_APP_DIR/
       - name: Pull updated images
         run: |
