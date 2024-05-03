@@ -1,0 +1,22 @@
+services: 
+  my-nginx-service:
+    image: nginx 
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - "8080:8080"
+    environment: 
+      - PORT=8080
+    volumes:
+      - mywebdata:/app/data
+  my-redis-service: 
+    image: redis 
+    volumes:
+      - myredisdata:/data
+
+volumes: 
+  mywebdata: 
+  myredisdata:
