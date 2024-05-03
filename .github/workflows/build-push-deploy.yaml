@@ -46,10 +46,8 @@ jobs:
           EOF
       - name: Ensure remote directory exists and has the compose spec file
         run: |
-          ssh $SSH_OPTS $REMOTE << EOF
-            mkdir -p $REMOTE_APP_DIR
-            scp $SSH_OPTS docker-compose.yaml $REMOTE:$REMOTE_APP_DIR/
-          EOF
+          ssh $SSH_OPTS $REMOTE mkdir -p $REMOTE_APP_DIR            
+          scp $SSH_OPTS docker-compose.yaml $REMOTE:$REMOTE_APP_DIR/
       - name: Pull updated images
         run: |
           ssh $SSH_OPTS $REMOTE << EOF
