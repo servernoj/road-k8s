@@ -25,6 +25,11 @@ jobs:
       - name: Push the container images 
         run: |
           docker push "$DH_USER/$REPO" --all-tags
+      - name: Implement the Private SSH Key 
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
       - name: Ensure Docker and Docker Compose is installed on VM 
         run: |
           ssh $SSH_OPTS $REMOTE << EOF
