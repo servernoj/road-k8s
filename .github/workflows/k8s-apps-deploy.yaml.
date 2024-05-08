@@ -13,7 +13,8 @@ jobs:
         run: mkdir -p ~/.kube/
       - name: Create kubectl config
         run: |
-          cat << EOF >> ~/.kube/config ${{ secrets.KUBECONFIG_SA }} 
+          cat << EOF >> ~/.kube/config
+          ${{ secrets.KUBECONFIG_SA }}
           EOF
       - name: Echo pods
         run: |
