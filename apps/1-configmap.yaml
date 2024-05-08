@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rk8s-apps
+data:
+  PY_ENDPOINT: "py-book.default.svc.cluster.local"
+  PY_PORT: "8080"

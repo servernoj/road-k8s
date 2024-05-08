@@ -1,8 +1,0 @@
-{
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": [
-      "file:///Users/servernoj/Projects/py/road/devops/ansible/deploy-python.yaml",
-      "file:///Users/servernoj/Projects/py/road/devops/ansible/install-nginx.yaml"
-    ]
-  }
-}
